@@ -11,7 +11,22 @@
   "license": "ISC",
   "dependencies": {
     "electron": "^24.4.0",
+    "electron-reload": "^2.0.0-alpha.1",
     "electron-store": "^8.1.0",
     "shelljs": "^0.8.5"
+  },
+  "build": {
+    "mac": {
+      "icon": "icon.icns"
+    },
+    "win": {
+      "icon": "icon.ico"
+    },
+    "linux": {
+      "icon": "icons"
+    }
+  },
+  "devDependencies": {
+    "electron-packager": "^17.1.1"
   }
 }
