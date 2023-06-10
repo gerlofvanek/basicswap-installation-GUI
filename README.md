@@ -13,3 +13,4 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 4. Upgraded Functionality
 5. Enhanced Style for Error and Confirmation Pop-ups:
 6. Finalize preparations for release.
+7. Add Releases on github (exe, zip)
