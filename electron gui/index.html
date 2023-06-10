@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BasicSwap Installation Wizard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #1E2936;
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      background-color: #2D3748;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #1573FE;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px 0;
+    }
+
+    #selected-path {
+      margin-bottom: 20px;
+      color: #A0AEC0;
+    }
+
+    .coin-selection {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #log {
+      width: 100%;
+      height: 300px;  /* Adjusted from 200px to 300px */
+      padding: 10px;
+      color: #A0AEC0;
+      background-color: #1A202C;
+      border: none;
+      border-radius: 5px;
+      resize: none;
+      margin-top: 10px;
+      overflow: auto;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BasicSwap Installation Wizard</h1>
+    <div id="page1">
+      <h2>Select Installation Path</h2>
+      <button id="select-installation-path">Select Installation Path</button>
+      <p id="selected-path"></p>
+      <button id="to-page2">Next</button>
+    </div>
+    <div id="page2" style="display: none;">
+      <div id="coinSelection" class="coin-selection">
+        <h2>Select coins:</h2>
+      </div>
+      <button id="startInstallButton">Install</button>
+    </div>
+    <div id="page3" style="display: none;">
+      <h2>Installation Log</h2>
+      <textarea id="log" readonly></textarea>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
