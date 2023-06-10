@@ -4,7 +4,7 @@
 
 Introducing BasicSwap (BSX) - A User-Friendly Installer for Linux, OSX, WIN.
 
-Are you looking for a hassle-free way to install [BasicSwap]([http://www.basicswap.io](https://basicswapdex.com/)) (BSX) without having to use the command-line interface (CLI)? We've got you covered! With our user-friendly installer, you can easily set up BasicSwap on your computer, even if you're not a CLI enthusiast/non-technical. 
+Are you looking for a hassle-free way to install [BasicSwap](https://basicswapdex.com) (BSX) without having to use the command-line interface (CLI)? We've got you covered! With our user-friendly installer, you can easily set up BasicSwap on your computer, even if you're not a CLI enthusiast/non-technical. 
 
 # WIP Todo:
 1. Comprehensive Testing across Multiple Platforms
