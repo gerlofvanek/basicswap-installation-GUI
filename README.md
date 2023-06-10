@@ -1,6 +1,6 @@
 ![BasicswapDEX Preview](.github-readme/basicswap_header.jpg)
 
-# BasicSwap Installation Script
+# BasicSwap (BSX) Installer for linux, osx, win
 
 # WIP Todo:
 1. Test, test, test on linux/osx/win
