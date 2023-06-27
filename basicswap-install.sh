@@ -27,7 +27,7 @@ echo "Checking and installing prerequisites..."
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     case $ID in
-        debian|ubuntu|raspbian)
+        debian|ubuntu|raspbian|linuxmint)
             echo "Debian-based OS detected"
             install_dependencies_debian
             ;;
