@@ -1,0 +1,35 @@
+{
+  "name": "basicswap-installer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-win": "electron-packager . basicswap-installer --overwrite --platform=win32 --arch=ia32,x64 --icon=assets/icons/icon.ico --prune=true --out=release-builds",
+    "package-mac": "electron-packager . basicswap-installer --overwrite --platform=darwin --arch=x64 --icon=assets/icons/icon.icns --prune=true --out=release-builds",
+    "package-linux": "electron-packager . basicswap-installer --overwrite --platform=linux --arch=x64 --icon=assets/icons --prune=true --out=release-builds"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-reload": "^2.0.0-alpha.1",
+    "electron-store": "^8.1.0",
+    "shelljs": "^0.8.5"
+  },
+  "build": {
+    "mac": {
+      "icon": "assets/icons/icon.icns"
+    },
+    "win": {
+      "icon": "assets/icons/icon.ico"
+    },
+    "linux": {
+      "icon": "assets/icons"
+    }
+  },
+  "devDependencies": {
+    "electron": "^24.4.0",
+    "electron-packager": "^17.1.1"
+  }
+}
