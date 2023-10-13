@@ -43,9 +43,9 @@ function Install-Dependencies-Windows {
     }
 
     # Install required packages via Chocolatey
-    Write-Host "[INFO] Installing python, protoc, protobuf, curl, jq, wget, and gnupg via Chocolatey..."
+    Write-Host "[INFO] Installing python, protoc, protobuf, curl, jq, wget, gnupg, git via Chocolatey..."
     try {
-        $chocoOutput = choco install python3 protoc protobuf curl jq wget gnupg -y 2>&1
+        $chocoOutput = choco install python3 protoc protobuf curl jq wget gnupg git -y 2>&1
         Write-Host $chocoOutput
     } catch {
         Write-Error "Failed to install dependencies via Chocolatey: $_"
@@ -150,17 +150,18 @@ $COINCURVE_REPO_PATH = Join-Path $COINDATA_PATH "coincurve-tecnovert"
 
 Write-Host ""
 Write-Host "##############################################################################"
-Write-Host "# 9 Check if Git is installed, and if not, install it."
+Write-Host "# 9 Check if Git is installed."
 Write-Host "##############################################################################"
 Write-Host ""
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
-    Write-Host "[INFO] Git not found. Installing Git..."
-    choco install git -y
-    Write-Host "PROGRESS: 45"
+    Write-Host "[ERROR] Git is not installed. Please ensure Git is installed before proceeding."
+    exit 1
 } else {
     Write-Host "[INFO] Git detected."
+    Write-Host "PROGRESS: 45"
 }
+
 
 Write-Host ""
 Write-Host "##############################################################################"
