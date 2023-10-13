@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BasicSwap (BSX) Installer v1.0.6-WIN</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <img src="images/logos/basicswap-logo.svg" alt="BasicSwap Logo" class="logo">
+  <div class="container">
+    <div id="page1">
+      <div>
+        <button id="select-installation-path">Select Installation Path</button>
+        <p id="selected-path"></p>
+      </div>
+      <button id="to-page2">Next</button>
+      <div class="stepper">
+        <div class="step active-step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+      </div>
+    </div>
+
+    <div id="page2" style="display: none;">
+      <div id="coinSelection" class="coin-selection">
+        <h2>Select Coins:</h2>
+      </div>
+      <button class="back-button" id="backButton2">Back</button>
+      <button id="startInstallButton">Install</button>
+      <div class="stepper">
+        <div class="step"></div>
+        <div class="step active-step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+      </div>
+    </div>
+
+    <div id="page3" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-status"></div>
+      </div>
+      <div id="progress-text">0%</div>
+      <h2>Installation Log:</h2>
+      <textarea id="output" rows="10" cols="50"></textarea>
+      <button class="back-button" id="backButton3" style="display:none" disabled>Back</button>
+      <button id="to-page4" style="display: none;">Next (Backup)</button>
+      <div class="stepper">
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step active-step"></div>
+        <div class="step"></div>
+      </div>
+    </div>
+
+    <div id="page4" style="display:none;">
+      <button id="toggle-important-output" class="action-button">
+        <span id="show-text"></span>
+      </button>
+      <div id="important-output"></div>
+      <div id="instruction-box">
+        To start the Basic Swap DEX, run the command below in command prompt (with admin rights):
+        <code>
+          cd <span id="INSTALL_PATH_1"></span>
+        </code>
+        <code>
+          basicswap-run --datadir="<span id="INSTALL_PATH_2"></span>\coindata"
+        </code>
+      </div>
+      <div id="instruction-box" class="xmr-height-enabled">
+        Since you've added XMR support, please note down the XMR height. You'll need this number if you want to restore the XMR node from the seed phrase.
+        <code>
+          <span id="update-xmr-height"></span>
+        </code>
+      </div>
+      <button id="window-all-closed" class="window-all-closed">Close</button>
+      <div class="stepper">
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step active-step"></div>
+      </div>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="custom-alert" class="custom-alert-overlay">
+      <div class="custom-alert-content">
+        <p id="custom-alert-text"></p>
+        <button id="custom-alert-close">Close</button>
+      </div>
+    </div>
+    
+    <div class="version">v1.0.6-WIN</div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
