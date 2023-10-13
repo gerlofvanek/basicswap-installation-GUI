@@ -19,9 +19,9 @@ Introducing BasicSwap (BSX) - A User-Friendly Installer for WIN 10/11. (Linux, O
 
 Are you looking for a hassle-free way to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI)? We've crafted this installer especially for you! Get BasicSwap up and running on your computer in no time, even if you're unfamiliar with CLI operations. 
 
-**Note**: ⚠️ Use the pre-compiled .exe (available in the "release" section). Or compile and build from the source code yourself.
+⚠️ **Note**: Use the pre-compiled .exe (available in the "release" section). Or compile and build from the source code yourself.
 
-**Note**: ⚠️ Always ensure that you run the .exe file with administrative privileges to ensure proper functionality.
+⚠️ **Note**: Always ensure that you run the .exe file with administrative privileges to ensure proper functionality.
 
 ## Supported Coins 
 
