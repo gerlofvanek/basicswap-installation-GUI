@@ -18,16 +18,44 @@ function Install-Dependencies-Windows {
     # Check if Chocolatey is installed
     if (-not (Get-Command choco.exe -ErrorAction SilentlyContinue)) {
         Write-Host "[INFO] Chocolatey not found. Installing Chocolatey..."
-        Set-ExecutionPolicy Bypass -Scope Process -Force;
-        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-        iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        try {
+            Set-ExecutionPolicy Bypass -Scope Process -Force;
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+            iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        } catch {
+            Write-Error "Failed to install Chocolatey: $_"
+            return
+        }
+    } else {
+        # Reset Chocolatey if it's already installed
+        Write-Host "[INFO] Resetting Chocolatey..."
+        try {
+            Remove-Item -Recurse -Force "$env:ChocolateyInstall"
+
+            # Reinstall Chocolatey
+            Set-ExecutionPolicy Bypass -Scope Process -Force;
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+            iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+        } catch {
+            Write-Error "Failed to reset Chocolatey: $_"
+            return
+        }
     }
 
     # Install required packages via Chocolatey
-    Write-Host "[INFO] Installing python3, protoc, protobuf, curl, jq, and wget via Chocolatey..."
-    choco install python3 protoc protobuf curl jq wget -y
+    Write-Host "[INFO] Installing python, protoc, protobuf, curl, jq, wget, and gnupg via Chocolatey..."
+    try {
+        $chocoOutput = choco install python3 protoc protobuf curl jq wget gnupg -y 2>&1
+        Write-Host $chocoOutput
+    } catch {
+        Write-Error "Failed to install dependencies via Chocolatey: $_"
+        return
+    }
+    
     Write-Host "PROGRESS: 10"
 }
+
+Install-Dependencies-Windows
 
 Write-Host ""
 Write-Host "##############################################################################"
@@ -78,7 +106,7 @@ Write-Host "####################################################################
 Write-Host ""
 
 if (Test-Path $COINDATA_PATH) {
-    Write-Warning "The coins data directory already exists at $COINDATA_PATH. Restart the installer and please select an empty folder."
+    Write-Warning "The coins data directory already exists at $COINDATA_PATH."
     $response = Read-Host "Would you like to perform a fresh installation and remove the existing directory? (y/N)"
     if ($response -match "^(y|yes)$") {
         Write-Host "[INFO] Removing coins data dir folder to start a fresh installation..."

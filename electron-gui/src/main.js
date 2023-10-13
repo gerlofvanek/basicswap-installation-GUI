@@ -16,6 +16,7 @@ function createWindow() {
             preload: path.join(__dirname, 'renderer/preload.js'),
         },
     });
+
     mainWindow.loadURL(
         url.format({
             pathname: path.join(__dirname, 'renderer/index.html'),
@@ -23,10 +24,20 @@ function createWindow() {
             slashes: true,
         })
     );
+
+    // Prevent the DevTools from opening
+    mainWindow.webContents.on("devtools-opened", () => {
+        mainWindow.webContents.closeDevTools();
+    });
+
+    // Remove the default menu bar
+    mainWindow.setMenu(null);
+
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
 }
+
 
 app.on('ready', createWindow);
 
@@ -51,6 +62,7 @@ ipcMain.handle('select-directory', async (event) => {
         properties: ['openDirectory']
     });
 });
+
 
 ipcMain.on('execute-powershell', (event, installPath, selectedCoins) => {
     const scriptPath = path.join(app.getAppPath(), 'build', 'basicswap-install-windows.ps1');
