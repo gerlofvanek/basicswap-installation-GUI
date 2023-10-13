@@ -2,7 +2,7 @@
 
 # BasicSwap (BSX) Installer (WIN 10/11)
 
-## 📜 Table of Contents
+## Table of Contents
 
 - [Introduction](#introduction)
 - [Supported Coins](#supported-coins)
@@ -33,21 +33,21 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 | Litecoin  | ✅ Supported               |
 | Pivx      | ✅ Supported               |
 
-## 🗺 Roadmap
+## Roadmap
 
 1. Comprehensive Testing across Multiple Platforms.
 2. Development for OSX/Linux.
 3. [Make Firo work for Windows](https://github.com/tecnovert/basicswap/blob/db0e85d37cfe4b0a42c1fdbf608b4d2df73e18d7/bin/basicswap_prepare.py#L628).
 
-## 🛠 Installation Guide for Node.js, npm, Yarn, and basicswap-installer Build
+## Installation Guide for Node.js, npm, Yarn, and basicswap-installer Build
 
-### 📋 Table of Contents
+### Table of Contents
 
 - [Installing Node.js and npm](#installing-nodejs-and-npm)
 - [Installing Yarn](#installing-yarn)
 - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
 
-### 🚀 Installing Node.js and npm
+### Installing Node.js and npm
 
 1. **Visit the Node.js Downloads Page**:
    - Navigate to [Node.js Downloads](https://nodejs.org/en/download/).
@@ -72,7 +72,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      npm -v
      ```
 
-### 📦 Installing Yarn
+### Installing Yarn
 
 1. **Using npm**:
    - With npm now installed, use it to globally install Yarn:
@@ -92,7 +92,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      yarn --version
      ```
 
-### 🖥 Building the basicswap-installer for Windows
+### Building the basicswap-installer for Windows
 
 1. **Navigate to the Project Directory**:
    - `cd path_to_your_project_directory` (e.g., `cd basicswap-Installation-GUI\electron-gui`)
@@ -116,7 +116,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      yarn start
      ```
 
-## 🙌 Support the Project
+## Support the Project
 
 We're dedicated to offering tools to enhance your experience. If you find the BasicSwap Installer beneficial and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to maintain and enhance the tool further.
 
