@@ -50,7 +50,7 @@ if (progressText) {
             break;
     }
 
-}
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-important-output');
     const showTextSpan = document.getElementById('show-text');
 
-    showTextSpan.innerHTML = '(<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN) 24 WORDS RECOVERY PHRASE (SHOW)'; // Set initial value
+    showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (SHOW)'; // Set initial value
 
     importantOutputDiv.style.display = 'none';
     toggleButton.style.display = 'block';
@@ -262,10 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButton.addEventListener('click', () => {
         if (importantOutputDiv.style.display === 'none') {
             importantOutputDiv.style.display = 'block';
-            showTextSpan.innerHTML = '(<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN) 24 WORDS RECOVERY PHRASE (HIDE)';
+            showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (HIDE)';
         } else {
             importantOutputDiv.style.display = 'none';
-            showTextSpan.innerHTML = '(<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN) 24 WORDS RECOVERY PHRASE (SHOW)';
+            showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (SHOW)';
         }
     });
 
