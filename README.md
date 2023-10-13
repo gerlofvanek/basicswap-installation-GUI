@@ -2,17 +2,30 @@
 
 # BasicSwap (BSX) Installer (WIN 10/11)
 
+## 📜 Table of Contents
+
+- [Introduction](#introduction)
+- [Supported Coins](#supported-coins)
+- [Roadmap](#roadmap)
+- [Installation Guide](#installation-guide-for-nodejs-npm-yarn-and-basicswap-installer-build)
+  - [Installing Node.js and npm](#installing-nodejs-and-npm)
+  - [Installing Yarn](#installing-yarn)
+  - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
+- [Support the Project](#support-the-project)
+
+## Introduction
+
 Introducing BasicSwap (BSX) - A User-Friendly Installer for WIN 10/11. (Linux, OSX, coming soon)
 
 Are you looking for a hassle-free way to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI)? We've crafted this installer especially for you! Get BasicSwap up and running on your computer in no time, even if you're unfamiliar with CLI operations. 
 
 **Note**: Always ensure that you run the .exe file with administrative privileges.
 
-## 🪙 Supported Coins 
+## Supported Coins 
 
 | Coin      | Status for Windows        |
 |:---------:|:-------------------------:|
-| Particl (default) | ✅ Supported |
+| Particl (Default) | ✅ Supported |
 | Monero    | ✅ Supported               |
 | Bitcoin   | ✅ Supported               |
 | Firo      | ❌ Not Supported           |
