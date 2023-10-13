@@ -5,13 +5,14 @@
 ## 📜 Table of Contents
 
 - [Introduction](#introduction)
-- [Supported Coins](#supported-coins)
-- [Roadmap](#roadmap)
-- [Installation Guide](#installation-guide-for-nodejs-npm-yarn-and-basicswap-installer-build)
-  - [Installing Node.js and npm](#installing-nodejs-and-npm)
-  - [Installing Yarn](#installing-yarn)
-  - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
-- [Support the Project](#support-the-project)
+- [Supported Coins](#-supported-coins)
+- [Roadmap](#🗺-roadmap)
+- [Installation Guide](#🛠-installation-guide-for-nodejs-npm-yarn-and-basicswap-installer-build)
+  - [Installing Node.js and npm](#🚀-installing-nodejs-and-npm)
+  - [Installing Yarn](#📦-installing-yarn)
+  - [Building the basicswap-installer for Windows](#🖥-building-the-basicswap-installer-for-windows)
+- [Support the Project](#🙌-support-the-project)
+
 
 ## Introduction
 
