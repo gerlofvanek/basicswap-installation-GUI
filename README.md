@@ -128,4 +128,16 @@ We're dedicated to offering tools to enhance your experience. If you find the Ba
 **Monero (XMR) Address:**  
 `48f89P6duCybsKrSBv8Wq3fW7k6tGH4t2atfH3ueeujkjdkwSJyC6HKXbhdq179VjoeNXjUCMrpG3731eawSFEVJL9d62fk`
 
-Your support is greatly appreciated!
+**Bitcoin (BTC) Address:**  
+`bc1qk5fujewn9e2rw0suuk8felu93u8g78jtxr7cry`
+
+**Litecoin (LTC) Address:**  
+`ltc1qu2phwzxxpq54e4xe8djqgj4ustn3juhl4y2470`
+
+**PIVX (PIVX) Address:**  
+`DTtCWz5V1sWtGa8xQa1M4fkDCffgxCTSqX`
+
+**FIRO (FIRO) Address:**  
+`aAHN7EbcBiRfNNG81AoeL9eco9erFWBkzs`
+
+🙌 Your support is greatly appreciated!
