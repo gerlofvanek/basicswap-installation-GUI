@@ -20,7 +20,7 @@ Introducing the BasicSwap DEX installer — a user-friendly graphical installati
 
 If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI), this graphical installer is made specifically for you! Simply download it and follow the on-screen instructions; you'll be ready to go in just a few minutes! 
 
-⚠️ **Note**: You can either use the pre-compiled .exe file available in the "release" section, or compile and build from the source code yourself.
+⚠️ **Note**: You can either use the pre-compiled .exe file available in the "Releases" section [here](https://github.com/gerlofvanek/basicswap-installation-GUI/releases/), or compile and build from the source code yourself.
 
 ⚠️ **Note**: Always ensure that you run the .exe file with administrative privileges to ensure proper functionality.
 
