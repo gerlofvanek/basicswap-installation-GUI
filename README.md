@@ -16,17 +16,17 @@
 
 ## Introduction
 
-Introducing BasicSwap (BSX) - A User-Friendly Installer for WIN 10/11. (Linux, OSX, coming soon)
+Introducing the BasicSwap DEX installer — a user-friendly graphical installation wizard for WIN 10/11. (Linux, OSX, coming soon)
 
-Are you looking for a hassle-free way to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI)? We've crafted this installer especially for you! Get BasicSwap up and running on your computer in no time, even if you're unfamiliar with CLI operations. 
+If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI), this graphical installer is made specifically for you! Simply download it and follow the on-screen instructions; you'll be ready to go in just a few minutes! 
 
-⚠️ **Note**: Use the pre-compiled .exe (available in the "release" section). Or compile and build from the source code yourself.
+⚠️ **Note**: You can either use the pre-compiled .exe file available in the "release" section, or compile and build from the source code yourself.
 
 ⚠️ **Note**: Always ensure that you run the .exe file with administrative privileges to ensure proper functionality.
 
 ## Supported Coins 
 
-| Coin      | Status for Windows        |
+| Coin      | Current Status            |
 |:---------:|:-------------------------:|
 | Particl (Default) | ✅ Supported |
 | Monero    | ✅ Supported               |
@@ -38,10 +38,8 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 
 ## Roadmap
 
-1. Comprehensive Testing across Multiple Platforms.
-2. Development for OSX/Linux.
-3. Generating a Checksum for all .zip/.exe releases.
-4. [Make Firo work for Windows](https://github.com/tecnovert/basicswap/blob/db0e85d37cfe4b0a42c1fdbf608b4d2df73e18d7/bin/basicswap_prepare.py#L628).
+1. Release versions for OSX and Linux distributions.
+2. [Make Firo work with the installer](https://github.com/tecnovert/basicswap/blob/db0e85d37cfe4b0a42c1fdbf608b4d2df73e18d7/bin/basicswap_prepare.py#L628).
 
 ## Installation Guide for Node.js, npm, Yarn, and basicswap-installer Build
 
@@ -57,8 +55,8 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
    - Navigate to [Node.js Downloads](https://nodejs.org/en/download/).
 
 2. **Select the Appropriate Version**:
-   - Choose the **LTS (Long Term Support)** version for stability. If you're feeling adventurous, go with the Current version.
-   - Download the installer tailored for your Windows machine.
+   - Choose the **LTS (Long Term Support)** version for stability, or the Current Version if you're more advanced.
+   - Download the installer.
 
 3. **Run the Installer**:
    - Launch the downloaded installer.
@@ -166,7 +164,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 
 ## Support the Project
 
-We're dedicated to offering tools to enhance your experience. If you find the BasicSwap Installer beneficial and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to maintain and enhance the tool further.
+We're dedicated to building tools to improve your financial privacy. If you find the BasicSwap Installer useful and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to keep on going.
 
 ### Donation Addresses:
 
