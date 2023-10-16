@@ -125,7 +125,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 
 ## BasicSwap DEX Operations and Commands:
 
-1. **Shutting Down BSX:**:
+1. **Shutting Down BSX**:
    - Press keys: CTRL+C
    - Alternatively, in the BasicSwap BSX GUI, select 'Shutdown' from the menu.
 
@@ -135,12 +135,12 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      http://127.0.0.1:12700
      ```
 
-3. **Upgrading Coins Core:**:
+3. **Upgrading Coins Core**:
      ```bash
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --preparebinonly --withcoins=coinname
      ```
 
-4. **Adding Other Coins:**:
+4. **Adding Other Coins**:
    - For Bitcoin:
      ```bash
      basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin,coinname
@@ -150,12 +150,14 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --addcoin=coinname,coinname
      ```
 
-5. **Updating BasicSwap BSX:**:
+5. **Updating BasicSwap BSX**:
    - (Run these commands in the Command Prompt CMD with administrative rights):
      ```bash
      cd C:\yourbasicswapfolder\basicswap
      git pull
      pip3 install .
+     cd C:\yourbasicswapfolder\
+     basicswap-run --datadir="C:\yourbasicswapfolder\coindata"
 
      ```
 Note: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, firo, pivx, litecoin
