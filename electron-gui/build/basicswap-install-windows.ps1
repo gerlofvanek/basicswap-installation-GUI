@@ -191,7 +191,7 @@ $BASICSWAP_PATH = Join-Path $INSTALL_PATH "basicswap"
 
 try {
     Write-Host "[INFO] Cloning and setting up BasicSwap from GitHub..."
-    git clone https://github.com/tecnovert/basicswap.git $BASICSWAP_PATH -b nav
+    git clone https://github.com/tecnovert/basicswap.git $BASICSWAP_PATH
     cd $BASICSWAP_PATH
     protoc -I=basicswap --python_out=basicswap basicswap/messages.proto
     Write-Host "[INFO] Installing required Python packages for BasicSwap..."
