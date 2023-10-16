@@ -11,7 +11,7 @@
   - [Installing Node.js and npm](#installing-nodejs-and-npm)
   - [Installing Yarn](#installing-yarn)
   - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
-  - [Basics Update Upgrade Add Other Coins for BasicSwap DEX](#basics-update-upgrade-add-other-coins-for-basicswap-dex)
+- [BasicSwap DEX Operations and Commands](#basicSwap-dex-operations-and-commands)
 - [Support the Project](#support-the-project)
 
 
@@ -123,20 +123,19 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      yarn start
      ```
 
-### Basics Update Upgrade Add Other Coins for BasicSwap DEX:
+## BasicSwap DEX Operations and Commands:
 
-1. **Stopping BSX:**:
+1. **Shutting Down BSX:**:
    - Press keys: CTRL+C
    - Alternatively, in the BasicSwap BSX GUI, select 'Shutdown' from the menu.
 
 2. **Accessing BasicSwap BSX GUI in the Browser:**:
-   - Navigate to:
+   - Use the following address:
      ```bash
      http://127.0.0.1:12700
      ```
 
-3. **Build the Windows Release**:
-   - Upgrading Coins Core Version:
+3. **Upgrading Coins Core:**:
      ```bash
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --preparebinonly --withcoins=coinname
      ```
@@ -144,22 +143,22 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
 4. **Adding Other Coins:**:
    - For Bitcoin:
      ```bash
-     basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin
+     basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin,coinname
      ```
-   - If Bitcoin is not selected/installed:
+   - If Bitcoin is not selected:
      ```bash
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --addcoin=coinname,coinname
      ```
 
-5. **Updating BasicSwap BSX for New Versions (Run in CMD (Command Prompt) with administrative privileges):**:
-   - Upgrading Coins Core Version:
+5. **Updating BasicSwap BSX:**:
+   - (Run these commands in the Command Prompt CMD with administrative rights):
      ```bash
      cd C:\yourbasicswapfolder\basicswap
      git pull
      pip3 install .
 
      ```
-Note: Ensure you replace placeholders like "coinname" or "yourbasicswapfolder" with the actual values when executing the commands. Coinnames are: particl, bitcoin, monero, dash, firo, pivx, litecoin
+Note: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, firo, pivx, litecoin
 
 
 ## Support the Project
