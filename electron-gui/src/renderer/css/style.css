@@ -37,9 +37,6 @@ h1, h2 {
 }
 
 h1 {
-  position: absolute;
-  top: 25px;
-  right: 20px;
   font-size: 14px;
 }
 
@@ -68,6 +65,7 @@ button:hover {
 /* Specific button styling */
 #to-page2,
 #to-page4,
+#to-page5,
 #startInstallButton {
   position: absolute;
   bottom: 10px;
@@ -80,7 +78,7 @@ button:hover {
   left: 20px;
   color: #ffffff;
   background-color: #232b3a;
-  border: 2px solid #1e2431;
+  border: 2px solid #232b3a;
 }
 
 .back-button:hover {
@@ -92,15 +90,6 @@ button:hover {
   position: absolute;
   bottom: 10px;
   right: 20px;
-  padding: 10px 15px;
-  font-size: 16px;
-  background-color: #3b82f6;
-  color: #ffffff;
-  border: 2px solid #3b82f6;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-bottom: 15px;
 }
 
 .window-all-closed:hover {
@@ -280,8 +269,7 @@ input[type=checkbox] {
   width: 600px;
   padding: 20px;
   background-color: #232b3a;
-  border:
- 2px solid #3b82f6;
+  border: 2px solid #3b82f6;
   border-radius: 5px;
   text-align: center;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -295,13 +283,11 @@ input[type=checkbox] {
 #custom-alert-text {
   color: #f3f4f6;
   margin-bottom: 15px;
-  font-size: 20px;
 }
 
 /* Custom alert close button */
 #custom-alert-close {
   padding: 10px 15px;
-  font-size: 16px;
   background-color: #3b82f6;
   color: #ffffff;
   border: 2px solid #3b82f6;
@@ -410,11 +396,26 @@ input[type=checkbox] {
 /* Warning message */
 .warning-message {
   padding: 10px;
-  color: #e53e3e;
   border-radius: 5px;
   text-align: center;
   margin-bottom: 20px;
+  font-size: 16px;
+  margin-top: 50px;
 }
+
+.red {
+  color: #e53e3e;
+}
+
+/* Default message */
+.default-message {
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 
 /* Instruction box */
 #instruction-box {
@@ -459,5 +460,5 @@ code {
   top: 15px;
   right: 20px;
   font-size: 12px;
-  color: #eee;
+  color: #a0aec0;
 }

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, Menu } = require('electron');
 const path = require('path');
 const url = require('url');
 const { spawn } = require('child_process');
@@ -17,6 +17,10 @@ function createWindow() {
         },
     });
 
+    // Set an empty menu to remove all default menu items
+    const emptyMenu = Menu.buildFromTemplate([]);
+    Menu.setApplicationMenu(emptyMenu);
+
     mainWindow.loadURL(
         url.format({
             pathname: path.join(__dirname, 'renderer/index.html'),
@@ -30,14 +34,10 @@ function createWindow() {
         mainWindow.webContents.closeDevTools();
     });
 
-    // Remove the default menu bar
-    mainWindow.setMenu(null);
-
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
 }
-
 
 app.on('ready', createWindow);
 
@@ -63,7 +63,6 @@ ipcMain.handle('select-directory', async (event) => {
     });
 });
 
-
 ipcMain.on('execute-powershell', (event, installPath, selectedCoins) => {
     const scriptPath = path.join(app.getAppPath(), 'build', 'basicswap-install-windows.ps1');
 
@@ -78,30 +77,30 @@ ipcMain.on('execute-powershell', (event, installPath, selectedCoins) => {
         selectedCoins
     ]);
 
-childProcess.stdout.on('data', (data) => {
-    console.log('stdout data:', data.toString());
+    childProcess.stdout.on('data', (data) => {
+        console.log('stdout data:', data.toString());
 
-    if (data.toString().includes("IMPORTANT")) {
-        event.sender.send('update-progress', 100);
-        console.log('Sent progress update: 100 (IMPORTANT detected)');
-    }
+        if (data.toString().includes("IMPORTANT")) {
+            event.sender.send('update-progress', 100);
+            console.log('Sent progress update: 100 (IMPORTANT detected)');
+        }
 
-    let match = data.toString().match(/PROGRESS:\s*(\d+)/);
-    if (match) {
-        let progress = parseInt(match[1]);
-        event.sender.send('update-progress', progress);
-        console.log('Sent progress update:', progress);
-    }
+        let match = data.toString().match(/PROGRESS:\s*(\d+)/);
+        if (match) {
+            let progress = parseInt(match[1]);
+            event.sender.send('update-progress', progress);
+            console.log('Sent progress update:', progress);
+        }
 
-    let matched = data.toString().match(/\[INFO\] Monero selected\. Current XMR height: (\d+)/);
+        let matched = data.toString().match(/\[INFO\] Monero selected\. Current XMR height: (\d+)/);
 
-    if (matched && matched[1]) {
-        let height = matched[1];
-        event.sender.send('update-xmr-height', height);
-    }
+        if (matched && matched[1]) {
+            let height = matched[1];
+            event.sender.send('update-xmr-height', height);
+        }
 
-    event.sender.send('powershell-output', data.toString());
-});
+        event.sender.send('powershell-output', data.toString());
+    });
 
     childProcess.stderr.on('data', (data) => {
         console.error('stderr data:', data.toString());
