@@ -119,6 +119,46 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      yarn start
      ```
 
+### Basics/Update/Upgrade/Add Other Coins for BasicSwap DEX:
+
+1. **Stopping BSX:**:
+   - Press:
+   - `CTRL+C` 
+   - Alternatively, in the BasicSwap BSX GUI, select 'Shutdown' from the menu.
+
+2. **Accessing BasicSwap BSX GUI in the Browser:**:
+   - Navigate to:
+     ```bash
+     http://127.0.0.1:12700
+     ```
+
+3. **Build the Windows Release**:
+   - Upgrading Coins Core Version:
+     ```bash
+     basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --preparebinonly --withcoins=coinname
+     ```
+
+4. **Adding Other Coins:**:
+   - For Bitcoin:
+     ```bash
+     basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin
+     ```
+   - If Bitcoin is not selected/installed:
+     ```bash
+     basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --addcoin=coinname,coinname
+     ```
+
+5. **Updating BasicSwap BSX for New Versions (Run in CMD as admin):**:
+   - Upgrading Coins Core Version:
+     ```bash
+     cd C:\yourbasicswapfolder\basicswap
+     git pull
+     pip3 install .
+
+     ```
+Note: Ensure you replace placeholders like "coinname" or "yourbasicswapfolder" with the actual values when executing the commands.
+
+
 ## Support the Project
 
 We're dedicated to offering tools to enhance your experience. If you find the BasicSwap Installer beneficial and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to maintain and enhance the tool further.
