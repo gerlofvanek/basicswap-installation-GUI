@@ -25,4 +25,5 @@ contextBridge.exposeInMainWorld("electron", {
     closeApp: () => {
         ipcRenderer.send('close-app');
     }
+
 });

@@ -48,8 +48,7 @@ if (progressText) {
                 progressText.textContent = percentage + '% ✨';
             }
             break;
-    }
-
+        }
     }
 }
 
@@ -59,11 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const selectedPathElement = document.getElementById('selected-path');
     const startInstallButton = document.getElementById('startInstallButton');
     const toPage2Button = document.getElementById('to-page2');
+    const toPage4Button = document.getElementById('to-page4');
+    const toPage5Button = document.getElementById('to-page5');
     const backButton2 = document.getElementById('backButton2');
     const backButton3 = document.getElementById('backButton3');
-    const toPage4Button = document.getElementById('to-page4');
     const backButton4 = document.getElementById('backButton4');
+
     const outputTextarea = document.getElementById('output');
+
 
     const coinsList = ["Particl", "Firo", "Monero", "Bitcoin", "Litecoin", "Dash", "PIVX"];
     let selectedCoins = {};
@@ -185,10 +187,21 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('page2').style.display = 'block';
     });
 
+    backButton4.addEventListener('click', function () {
+        document.getElementById('page5').style.display = 'none';
+        document.getElementById('page4').style.display = 'block';
+    });
+
     toPage4Button.addEventListener('click', function () {
         document.getElementById('page3').style.display = 'none';
         document.getElementById('page4').style.display = 'block';
     });
+
+    toPage5Button.addEventListener('click', function () {
+        document.getElementById('page4').style.display = 'none';
+        document.getElementById('page5').style.display = 'block';
+    });
+
 
     electron.receivePowerShellOutput((data) => {
         console.log('Received data from PowerShell:', data); 
@@ -254,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-important-output');
     const showTextSpan = document.getElementById('show-text');
 
-    showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (SHOW)'; // Set initial value
+    showTextSpan.innerHTML = 'SHOW 24 WORDS RECOVERY PHRASE';
 
     importantOutputDiv.style.display = 'none';
     toggleButton.style.display = 'block';
@@ -262,14 +275,12 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButton.addEventListener('click', () => {
         if (importantOutputDiv.style.display === 'none') {
             importantOutputDiv.style.display = 'block';
-            showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (HIDE)';
+            showTextSpan.innerHTML = 'HIDE 24 WORDS RECOVERY PHRASE';
         } else {
             importantOutputDiv.style.display = 'none';
-            showTextSpan.innerHTML = '<strong>WARNING:</strong> DO NOT FORGET TO WRITE DOWN THE 24 WORDS RECOVERY PHRASE (SHOW)';
+            showTextSpan.innerHTML = 'SHOW 24 WORDS RECOVERY PHRASE';
         }
     });
-
-
 
     electron.receivePowerShellOutput((data) => {
 
