@@ -11,7 +11,11 @@
   - [Installing Node.js and npm](#installing-nodejs-and-npm)
   - [Installing Yarn](#installing-yarn)
   - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
+  - [Basics Update Upgrade Add Other Coins for BasicSwap DEX](#basics-update-upgrade-add-other-coins-for-basicswap-dex)
 - [Support the Project](#support-the-project)
+
+
+
 
 ## Introduction
 
@@ -119,11 +123,10 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      yarn start
      ```
 
-### Basics/Update/Upgrade/Add Other Coins for BasicSwap DEX:
+### Basics Update Upgrade Add Other Coins for BasicSwap DEX:
 
 1. **Stopping BSX:**:
-   - Press:
-   - `CTRL+C` 
+   - Press keys: CTRL+C
    - Alternatively, in the BasicSwap BSX GUI, select 'Shutdown' from the menu.
 
 2. **Accessing BasicSwap BSX GUI in the Browser:**:
@@ -148,7 +151,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --addcoin=coinname,coinname
      ```
 
-5. **Updating BasicSwap BSX for New Versions (Run in CMD as admin):**:
+5. **Updating BasicSwap BSX for New Versions (Run in CMD (Command Prompt) with administrative privileges):**:
    - Upgrading Coins Core Version:
      ```bash
      cd C:\yourbasicswapfolder\basicswap
@@ -156,7 +159,7 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      pip3 install .
 
      ```
-Note: Ensure you replace placeholders like "coinname" or "yourbasicswapfolder" with the actual values when executing the commands.
+Note: Ensure you replace placeholders like "coinname" or "yourbasicswapfolder" with the actual values when executing the commands. Coinnames are: particl, bitcoin, monero, dash, firo, pivx, litecoin
 
 
 ## Support the Project
