@@ -159,7 +159,9 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      basicswap-run --datadir="C:\yourbasicswapfolder\coindata"
 
      ```
-Note: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, firo, pivx, litecoin
+**Note**: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, pivx, litecoin
+
+⚠️ **Note**: Virus scanners may mistakenly identify monerod (Monero - XMR) as malware.
 
 
 ## Support the Project
