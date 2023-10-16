@@ -14,9 +14,6 @@
 - [BasicSwap DEX Operations and Commands](#basicSwap-dex-operations-and-commands)
 - [Support the Project](#support-the-project)
 
-
-
-
 ## Introduction
 
 Introducing BasicSwap (BSX) - A User-Friendly Installer for WIN 10/11. (Linux, OSX, coming soon)
@@ -136,11 +133,13 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      ```
 
 3. **Upgrading Coins Core**:
+   - (Run these commands in the Command Prompt CMD with administrative rights):
      ```bash
      basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --preparebinonly --withcoins=coinname
      ```
 
 4. **Adding Other Coins**:
+   - (Run these commands in the Command Prompt CMD with administrative rights):
    - For Bitcoin:
      ```bash
      basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin,coinname
