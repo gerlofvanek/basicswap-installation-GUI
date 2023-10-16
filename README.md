@@ -11,7 +11,11 @@
   - [Installing Node.js and npm](#installing-nodejs-and-npm)
   - [Installing Yarn](#installing-yarn)
   - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
+- [BasicSwap DEX Operations and Commands](#basicSwap-dex-operations-and-commands)
 - [Support the Project](#support-the-project)
+
+
+
 
 ## Introduction
 
@@ -118,6 +122,46 @@ Are you looking for a hassle-free way to install [BasicSwap](https://basicswapde
      ```bash
      yarn start
      ```
+
+## BasicSwap DEX Operations and Commands:
+
+1. **Shutting Down BSX**:
+   - Press keys: CTRL+C
+   - Alternatively, in the BasicSwap BSX GUI, select 'Shutdown' from the menu.
+
+2. **Accessing BasicSwap BSX GUI in the Browser:**:
+   - Use the following address:
+     ```bash
+     http://127.0.0.1:12700
+     ```
+
+3. **Upgrading Coins Core**:
+     ```bash
+     basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --preparebinonly --withcoins=coinname
+     ```
+
+4. **Adding Other Coins**:
+   - For Bitcoin:
+     ```bash
+     basicswap-prepare --usebtcfastsync --datadir="C:\yourbasicswapfolder\coindata" --addcoin=bitcoin,coinname
+     ```
+   - If Bitcoin is not selected:
+     ```bash
+     basicswap-prepare --datadir="C:\yourbasicswapfolder\coindata" --addcoin=coinname,coinname
+     ```
+
+5. **Updating BasicSwap BSX**:
+   - (Run these commands in the Command Prompt CMD with administrative rights):
+     ```bash
+     cd C:\yourbasicswapfolder\basicswap
+     git pull
+     pip3 install .
+     cd C:\yourbasicswapfolder\
+     basicswap-run --datadir="C:\yourbasicswapfolder\coindata"
+
+     ```
+Note: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, firo, pivx, litecoin
+
 
 ## Support the Project
 
