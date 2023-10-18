@@ -5,19 +5,41 @@ param (
     [string]$SELECTED_COINS
 )
 
+Write-Host ""
+Write-Host "##############################################################################"
+Write-Host "# 0 Check if running as administrator."
+Write-Host "##############################################################################"
+Write-Host ""
+
+
 # Check if running as administrator
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "##############################################################################"
-    Write-Error "Please right-click and re-run installer as administrator."
+    Write-Error "# Please right-click and re-run installer as administrator."
     Write-Host "##############################################################################"
     exit 1
 }
 
-Write-Host ""
-Write-Host "##############################################################################"
-Write-Host "# 1 Installing Dependencies."
-Write-Host "##############################################################################"
-Write-Host ""
+function Uninstall-Dependencies-Windows {
+    Write-Host "[INFO] Uninstalling dependencies..."
+
+    $dependencies = @('python3', 'protoc', 'curl', 'jq', 'wget', 'gnupg', 'git', 'protobuf')
+
+    foreach ($dep in $dependencies) {
+        if (choco list --local-only $dep | Where-Object { $_ -match "$dep\|" }) {
+            Write-Host "[INFO] Uninstalling $dep..."
+            try {
+                choco uninstall $dep -y
+            } catch {
+                Write-Error "Failed to uninstall ${dep}: $_"
+            }
+        } else {
+            Write-Host "[INFO] $dep not found, skipping..."
+        }
+    }
+
+    Write-Host "[INFO] Finished uninstalling dependencies."
+}
 
 function Install-Dependencies-Windows {
     Write-Host "[INFO] Installing required dependencies..."
@@ -57,7 +79,7 @@ function Install-Dependencies-Windows {
     # Install required packages via Chocolatey
     Write-Host "[INFO] Installing python, protoc, protobuf, curl, jq, wget, gnupg, git via Chocolatey..."
     try {
-        $chocoOutput = choco install python3 protoc protobuf curl jq wget gnupg git -y 2>&1
+        $chocoOutput = choco install python3 protoc curl jq wget gnupg git protobuf -y 2>&1
         Write-Host $chocoOutput
     } catch {
         Write-Error "Failed to install dependencies via Chocolatey: $_"
@@ -66,6 +88,22 @@ function Install-Dependencies-Windows {
 
     Write-Host "PROGRESS: 10"
 }
+
+# Call the functions
+Write-Host ""
+Write-Host "##############################################################################"
+Write-Host "# 1a Uninstall Dependencies."
+Write-Host "##############################################################################"
+Write-Host ""
+Uninstall-Dependencies-Windows
+
+Write-Host ""
+Write-Host "##############################################################################"
+Write-Host "# 1b Installing Dependencies."
+Write-Host "##############################################################################"
+Write-Host ""
+Install-Dependencies-Windows
+
 
 Install-Dependencies-Windows
 
