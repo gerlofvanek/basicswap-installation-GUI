@@ -5,6 +5,14 @@ param (
     [string]$SELECTED_COINS
 )
 
+# Check if running as administrator
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    Write-Host "##############################################################################"
+    Write-Error "Please right-click and re-run installer as administrator."
+    Write-Host "##############################################################################"
+    exit 1
+}
+
 Write-Host ""
 Write-Host "##############################################################################"
 Write-Host "# 1 Installing Dependencies."
@@ -15,8 +23,13 @@ function Install-Dependencies-Windows {
     Write-Host "[INFO] Installing required dependencies..."
     Write-Host "PROGRESS: 5"
 
-    # Check if Chocolatey is installed
+    # Check if Chocolatey is installed    
     if (-not (Get-Command choco.exe -ErrorAction SilentlyContinue)) {
+        # Check for the existence of the Chocolatey directory and remove if found
+        if (Test-Path "$env:ChocolateyInstall") {
+            Remove-Item -Recurse -Force "$env:ChocolateyInstall"
+        }
+
         Write-Host "[INFO] Chocolatey not found. Installing Chocolatey..."
         try {
             Set-ExecutionPolicy Bypass -Scope Process -Force;
@@ -27,18 +40,17 @@ function Install-Dependencies-Windows {
             return
         }
     } else {
-        # Reset Chocolatey if it's already installed
-        Write-Host "[INFO] Resetting Chocolatey..."
-        try {
-            Remove-Item -Recurse -Force "$env:ChocolateyInstall"
+        Write-Host "[INFO] Chocolatey already installed."
+    }
 
-            # Reinstall Chocolatey
-            Set-ExecutionPolicy Bypass -Scope Process -Force;
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-            iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    # Check if older versions of Python exist and remove them
+    Write-Host "[INFO] Check if older versions of Python exist and remove them"
+    if (choco list --local-only python | Where-Object { $_ -match 'python\|' }) {
+        Write-Host "[INFO] Removing older versions of Python..."
+        try {
+            choco uninstall python -y
         } catch {
-            Write-Error "Failed to reset Chocolatey: $_"
-            return
+            Write-Error "Failed to uninstall older versions of Python: $_"
         }
     }
 
@@ -51,11 +63,23 @@ function Install-Dependencies-Windows {
         Write-Error "Failed to install dependencies via Chocolatey: $_"
         return
     }
-    
+
     Write-Host "PROGRESS: 10"
 }
 
 Install-Dependencies-Windows
+
+# Create a Python Virtual Environment
+Write-Host "[INFO] Creating a Python virtual environment..."
+$venvPath = Join-Path -Path $INSTALL_PATH -ChildPath "venv"
+python -m venv $venvPath
+
+# Activate the Virtual Environment
+Write-Host "[INFO] Activating the virtual environment..."
+$activateScript = Join-Path -Path $venvPath -ChildPath "Scripts\Activate"
+. $activateScript
+
+Write-Host "[INFO] Virtual environment activated!"
 
 Write-Host ""
 Write-Host "##############################################################################"
@@ -224,7 +248,7 @@ try {
             exit 1
         }
         
-        Write-Host "[INFO] Monero setup and download completed."
+        Write-Host "[INFO] BasicSwap with Monero setup and download completed."
 
     } else {
         Write-Host "[INFO] Preparing BasicSwap."
