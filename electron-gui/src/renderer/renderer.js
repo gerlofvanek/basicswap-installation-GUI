@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
             coinName.textContent += ' (Default)';
         }
 
-        if (coin === 'Firo') {
+        if (coin === 'Test') {
             coinContainer.classList.add('disabled');
             coinName.textContent += ' (Disabled)';
         }
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
         coinContainer.appendChild(coinName);
         coinSelection.appendChild(coinContainer);
 
-        if (coin !== 'Particl' && coin !== 'Firo') {
+        if (coin !== 'Particl' && coin !== 'Test') {
             coinContainer.addEventListener('click', function () {
                 this.classList.toggle('selected');
                 selectedCoins[coin] = this.classList.contains('selected');
