@@ -1,4 +1,4 @@
-![BasicswapDEX Preview](.github-readme/basicswap_header_v1.0.7-WIN.jpg)
+![BasicswapDEX Preview](.github-readme/basicswap_header_v1.2.0-WIN.jpg)
 
 # BasicSwap (BSX) Installer (WIN 10/11)
 
