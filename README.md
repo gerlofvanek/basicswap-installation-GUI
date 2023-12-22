@@ -183,6 +183,6 @@ We're dedicated to building tools to improve your financial privacy. If you find
 `DTtCWz5V1sWtGa8xQa1M4fkDCffgxCTSqX`
 
 **FIRO (FIRO) Address:**  
-`aAHN7EbcBiRfNNG81AoeL9eco9erFWBkzs`
+`aBdMWuehMpFgisvHs5H9phd9XXtAF9XAbP`
 
 🙌 Your support is greatly appreciated!
