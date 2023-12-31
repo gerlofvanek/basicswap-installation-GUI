@@ -176,13 +176,19 @@ We're dedicated to building tools to improve your financial privacy. If you find
 **Bitcoin (BTC) Address:**  
 `bc1qk5fujewn9e2rw0suuk8felu93u8g78jtxr7cry`
 
+**Litecoin (LTC-MWEB) Address:**  
+`ltcmweb1qq22jyxss23ahu5ycjm8pywn45hdrp98kpe4ezwuxr4yvm9qk53y0sqs9rlyswjy4strw7qnetr7fccmdxzmsgdah0l3vp6nxn3sphzzwj5fhh3r8`
+
 **Litecoin (LTC) Address:**  
-`ltc1qu2phwzxxpq54e4xe8djqgj4ustn3juhl4y2470`
+`ltc1qsre9qhqg9na6mxqsrmq7vvlq58swp6kxjmg4d3`
 
 **PIVX (PIVX) Address:**  
 `DTtCWz5V1sWtGa8xQa1M4fkDCffgxCTSqX`
 
 **FIRO (FIRO) Address:**  
 `aBdMWuehMpFgisvHs5H9phd9XXtAF9XAbP`
+
+**Dash (DASH) Address:**  
+`Xj3Rv5REJB4tujT7vVPzFqUMKj5pnaaQwh`
 
 🙌 Your support is greatly appreciated!
