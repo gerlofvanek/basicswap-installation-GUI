@@ -33,7 +33,7 @@ If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without
 | Bitcoin   | ✅ Supported               |
 | Firo      | ✅ Supported            |
 | Dash      | ✅ Supported               |
-| Litecoin  | ✅ Supported               |
+| Litecoin (+MWEB)  | ✅ Supported               |
 | Pivx      | ✅ Supported               |
 
 ## Roadmap
