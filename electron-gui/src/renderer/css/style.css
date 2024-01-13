@@ -446,6 +446,7 @@ code {
   border-radius: 5px;
   overflow: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
   user-select: all;
 }
 
