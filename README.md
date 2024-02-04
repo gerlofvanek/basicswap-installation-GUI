@@ -177,7 +177,7 @@ We're dedicated to building tools to improve your financial privacy. If you find
 `bc1qk5fujewn9e2rw0suuk8felu93u8g78jtxr7cry`
 
 **Litecoin (LTC-MWEB) Address:**  
-`ltcmweb1qq22jyxss23ahu5ycjm8pywn45hdrp98kpe4ezwuxr4yvm9qk53y0sqs9rlyswjy4strw7qnetr7fccmdxzmsgdah0l3vp6nxn3sphzzwj5fhh3r8`
+`ltcmweb1qqdy4u664glaky29lqlekwzk6t6gejs3huush68jtvrdtgd802d8ywqn8y6auz0yjw9h7nmgz276am9zpql5qk4xg8f6g5g8q70p89j5z8uhehjvn`
 
 **Litecoin (LTC) Address:**  
 `ltc1qsre9qhqg9na6mxqsrmq7vvlq58swp6kxjmg4d3`
