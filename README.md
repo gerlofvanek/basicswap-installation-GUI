@@ -16,7 +16,7 @@
 
 ## Introduction
 
-Introducing the BasicSwap DEX installer — a user-friendly graphical installation wizard for WIN 10/11. (Linux, OSX, coming soon)
+Introducing the BasicSwap DEX installer — a user-friendly graphical installation wizard for WIN 10/11.
 
 If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without having to navigate the intricacies of the command-line interface (CLI), this graphical installer is made specifically for you! Simply download it and follow the on-screen instructions; you'll be ready to go in just a few minutes! 
 
