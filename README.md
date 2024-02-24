@@ -174,7 +174,7 @@ We're dedicated to building tools to improve your financial privacy. If you find
 `48f89P6duCybsKrSBv8Wq3fW7k6tGH4t2atfH3ueeujkjdkwSJyC6HKXbhdq179VjoeNXjUCMrpG3731eawSFEVJL9d62fk`
 
 **Bitcoin (BTC) Address:**  
-`bc1qk5fujewn9e2rw0suuk8felu93u8g78jtxr7cry`
+`bc1qkqcafr95p6dh0x3d7z5kjm7vw3q42mqhm7n3fz`
 
 **Litecoin (LTC-MWEB) Address:**  
 `ltcmweb1qqdy4u664glaky29lqlekwzk6t6gejs3huush68jtvrdtgd802d8ywqn8y6auz0yjw9h7nmgz276am9zpql5qk4xg8f6g5g8q70p89j5z8uhehjvn`
