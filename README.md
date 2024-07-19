@@ -1,4 +1,4 @@
-![BasicswapDEX Preview](.github-readme/basicswap_header_v2.0.0-WIN.jpg)
+![BasicswapDEX Preview](.github-readme/basicswap_header_v3.0.0-WIN.jpg)
 
 # BasicSwap (BSX) Installer (WIN 10/11)
 
@@ -6,13 +6,12 @@
 
 - [Introduction](#introduction)
 - [Supported Coins](#supported-coins)
-- [Roadmap](#roadmap)
+- [Support the Project](#support-the-project)
 - [Installation Guide](#installation-guide-for-nodejs-npm-yarn-and-basicswap-installer-build)
   - [Installing Node.js and npm](#installing-nodejs-and-npm)
   - [Installing Yarn](#installing-yarn)
   - [Building the basicswap-installer for Windows](#building-the-basicswap-installer-for-windows)
 - [BasicSwap DEX Operations and Commands](#basicSwap-dex-operations-and-commands)
-- [Support the Project](#support-the-project)
 
 ## Introduction
 
@@ -35,10 +34,46 @@ If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without
 | Dash      | ✅ Supported               |
 | Litecoin (+MWEB)  | ✅ Supported               |
 | Pivx      | ✅ Supported               |
+| Wownero      | ✅ Supported               |
+| Decred      | ✅ Supported               |
 
-## Roadmap
+## Support the Project
 
-1. Release versions for OSX and Linux distributions (WIP)
+We're dedicated to building tools to improve your financial privacy. If you find the BasicSwap Installer useful and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to keep on going.
+
+### Donation Addresses:
+
+**Particl (PART) Stealth Address:**  
+`SPH2gToV6KS9ykKRkFoxH4XHKfYUtY9RBzUR3sGLamHsd9fnoKu9deDJZ3mR54CRzdcbBhi1jZjAtZX2cacieVTHzP5hvdmo3YYHRZ`
+
+**Monero (XMR) Address:**  
+`48f89P6duCybsKrSBv8Wq3fW7k6tGH4t2atfH3ueeujkjdkwSJyC6HKXbhdq179VjoeNXjUCMrpG3731eawSFEVJL9d62fk`
+
+**Wownero (WOW) Address:**
+`WW2a4WZZS55Nzrxqc74K1M1E7ujQBFuqoi9Qwn4KiUFJP6xRgKQG6hnGL6NvwHGebmSkVHskRccfZe5pH2DPtKFc16Tv1jpnV`
+
+**Decred (DCR) Address:**
+`DspBnEEY73c1rF4USzdEde2Kz9UAix4zTrk`
+
+**Bitcoin (BTC) Address:**  
+`bc1qkqcafr95p6dh0x3d7z5kjm7vw3q42mqhm7n3fz`
+
+**Litecoin (LTC-MWEB) Address:**  
+`ltcmweb1qqdy4u664glaky29lqlekwzk6t6gejs3huush68jtvrdtgd802d8ywqn8y6auz0yjw9h7nmgz276am9zpql5qk4xg8f6g5g8q70p89j5z8uhehjvn`
+
+**Litecoin (LTC) Address:**  
+`ltc1qsre9qhqg9na6mxqsrmq7vvlq58swp6kxjmg4d3`
+
+**PIVX (PIVX) Address:**  
+`DTtCWz5V1sWtGa8xQa1M4fkDCffgxCTSqX`
+
+**FIRO (FIRO) Address:**  
+`aBdMWuehMpFgisvHs5H9phd9XXtAF9XAbP`
+
+**Dash (DASH) Address:**  
+`Xj3Rv5REJB4tujT7vVPzFqUMKj5pnaaQwh`
+
+🙌 Your support is greatly appreciated!
 
 ## Installation Guide for Node.js, npm, Yarn, and basicswap-installer Build
 
@@ -159,36 +194,3 @@ If you're looking to install [BasicSwap](https://basicswapdex.com) (BSX) without
 **Note**: Replace placeholders such as coinname or yourbasicswapfolder with actual values before executing commands. Supported Coins: particl, bitcoin, monero, dash, pivx, litecoin
 
 ⚠️ **Note**: Virus scanners may mistakenly identify monerod (Monero - XMR) as malware.
-
-
-## Support the Project
-
-We're dedicated to building tools to improve your financial privacy. If you find the BasicSwap Installer useful and would like to support our ongoing initiatives, consider donating to our project. Every contribution, regardless of its size, enables us to keep on going.
-
-### Donation Addresses:
-
-**Particl (PART) Stealth Address:**  
-`SPH2gToV6KS9ykKRkFoxH4XHKfYUtY9RBzUR3sGLamHsd9fnoKu9deDJZ3mR54CRzdcbBhi1jZjAtZX2cacieVTHzP5hvdmo3YYHRZ`
-
-**Monero (XMR) Address:**  
-`48f89P6duCybsKrSBv8Wq3fW7k6tGH4t2atfH3ueeujkjdkwSJyC6HKXbhdq179VjoeNXjUCMrpG3731eawSFEVJL9d62fk`
-
-**Bitcoin (BTC) Address:**  
-`bc1qkqcafr95p6dh0x3d7z5kjm7vw3q42mqhm7n3fz`
-
-**Litecoin (LTC-MWEB) Address:**  
-`ltcmweb1qqdy4u664glaky29lqlekwzk6t6gejs3huush68jtvrdtgd802d8ywqn8y6auz0yjw9h7nmgz276am9zpql5qk4xg8f6g5g8q70p89j5z8uhehjvn`
-
-**Litecoin (LTC) Address:**  
-`ltc1qsre9qhqg9na6mxqsrmq7vvlq58swp6kxjmg4d3`
-
-**PIVX (PIVX) Address:**  
-`DTtCWz5V1sWtGa8xQa1M4fkDCffgxCTSqX`
-
-**FIRO (FIRO) Address:**  
-`aBdMWuehMpFgisvHs5H9phd9XXtAF9XAbP`
-
-**Dash (DASH) Address:**  
-`Xj3Rv5REJB4tujT7vVPzFqUMKj5pnaaQwh`
-
-🙌 Your support is greatly appreciated!
