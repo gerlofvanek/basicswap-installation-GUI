@@ -52,7 +52,7 @@ We're dedicated to building tools to improve your financial privacy. If you find
 **Wownero (WOW) Address:**
 `WW2a4WZZS55Nzrxqc74K1M1E7ujQBFuqoi9Qwn4KiUFJP6xRgKQG6hnGL6NvwHGebmSkVHskRccfZe5pH2DPtKFc16Tv1jpnV`
 
-**Decred (DCR) Address:**
+**Decred (DCR) Address:**  
 `DspBnEEY73c1rF4USzdEde2Kz9UAix4zTrk`
 
 **Bitcoin (BTC) Address:**  
