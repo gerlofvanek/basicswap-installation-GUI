@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const backButton4 = document.getElementById('backButton4');
     const outputTextarea = document.getElementById('output');
 
-    const coinsList = ["Particl", "Firo", "Monero", "Bitcoin", "Litecoin", "Dash", "PIVX", "Wownero", "Decred"];
+// removed Dash, PIVX and Decred for now (needs update/fixes)
+    const coinsList = ["Particl", "Monero", "Wownero", "Bitcoin", "Litecoin", "Firo"];
     let selectedCoins = {};
     let installationPath = '';
     const electron = window.electron;

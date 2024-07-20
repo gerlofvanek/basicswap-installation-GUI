@@ -10,25 +10,24 @@ param (
 function LogMessage {
     param(
         [string]$message,
-        [string]$type
+        [string]$type = "INFO"
     )
 
-    # Add logging logic here
     if ($type -eq "ERROR") {
         Write-Error $message
-
     } else {
         Write-Host $message
     }
 }
 
-######################################
-# Start_BasicSwapDEX.bat
-######################################
+function RefreshEnv {
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
 
-$INSTALL_PATH_RUN = "$INSTALL_PATH"
+function Create-BatFiles {
+    $INSTALL_PATH_RUN = $INSTALL_PATH
 
-$runBatContent = @"
+    $runBatContent = @"
 REM Navigate to the directory where BasicSwap DEX is located
 cd /d "$INSTALL_PATH_RUN"
 
@@ -55,24 +54,12 @@ echo After a few minutes, you can launch your preferred web browser and enter th
 echo http://localhost:12700 or http://127.0.0.1:12700
 "@
 
-# Path for the run.bat file
-$runBatPath = Join-Path -Path $INSTALL_PATH -ChildPath "Start_BasicSwapDEX_Run_As_Administrator.bat"
+    $runBatPath = Join-Path -Path $INSTALL_PATH -ChildPath "Start_BasicSwapDEX_Run_As_Administrator.bat"
+    $runBatContent | Set-Content -Path $runBatPath
 
-# Create or overwrite the run.bat file with the provided content
-$runBatContent | Set-Content -Path $runBatPath
-
-######################################
-# Batch script block ends here
-######################################
-######################################
-# Update_BasicSwapDEX_and_Coincurve.bat
-######################################
-
-$INSTALL_PATH_UPDATE = "$INSTALL_PATH"
-
-$updateBatContent = @"
+    $updateBatContent = @"
 REM Set the swap directory
-set "SWAP_DATADIR=$INSTALL_PATH_UPDATE"
+set "SWAP_DATADIR=$INSTALL_PATH"
 
 REM Remove the existing coincurve-anonswap directory if it exists
 if exist "%SWAP_DATADIR%\coindata\coincurve-tecnovert" rmdir /s /q "%SWAP_DATADIR%\coindata\coincurve-tecnovert"
@@ -106,7 +93,7 @@ REM Change directory back to the swap directory
 cd "%SWAP_DATADIR%"
 
 REM Clone basicswap repository from GitHub
-git clone https://github.com/tecnovert/basicswap.git
+git clone https://github.com/basicswap/basicswap.git
 
 REM Change directory to basicswap directory
 cd "%SWAP_DATADIR%\basicswap"
@@ -121,26 +108,10 @@ REM You can close command-line windows now with CTRL+C and start update.bat
 pause
 "@
 
-# Path for the update.bat file
-$updateBatPath = Join-Path -Path $INSTALL_PATH -ChildPath "Update_BasicSwapDEX_and_Coincurve_Run_As_Administrator.bat"
+    $updateBatPath = Join-Path -Path $INSTALL_PATH -ChildPath "Update_BasicSwapDEX_and_Coincurve_Run_As_Administrator.bat"
+    $updateBatContent | Set-Content -Path $updateBatPath
 
-# Create or overwrite the update.bat file with the provided content
-$updateBatContent | Set-Content -Path $updateBatPath
-
-######################################
-# Batch script block ends here
-######################################
-
-LogMessage "##############################################################################"
-LogMessage "# Check if running as administrator."
-LogMessage "##############################################################################"
-
-# Check if running as administrator
-if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    LogMessage "##############################################################################"
-    LogMessage "# Please right-click and re-run installer as administrator."
-    LogMessage "##############################################################################"
-    exit 1
+    LogMessage "[INFO] Created Start_BasicSwapDEX_Run_As_Administrator.bat and Update_BasicSwapDEX_and_Coincurve_Run_As_Administrator.bat"
 }
 
 function Uninstall-Dependencies-Windows {
@@ -150,11 +121,11 @@ function Uninstall-Dependencies-Windows {
 
     foreach ($dep in $dependencies) {
         if (choco list --local-only $dep | Where-Object { $_ -match "$dep\|" }) {
-            LogMessage "[INFO] Uninstalling $dep..." "INFO"
+            LogMessage "[INFO] Uninstalling $dep..."
             try {
                 choco uninstall $dep -y
             } catch {
-                LogMessage "Failed to uninstall ${dep}: $_"
+                LogMessage "Failed to uninstall ${dep}: $_" "ERROR"
             }
         } else {
             LogMessage "[INFO] $dep not found, skipping..."
@@ -166,50 +137,57 @@ function Uninstall-Dependencies-Windows {
 
 function Install-Dependencies-Windows {
     LogMessage "[INFO] Installing required dependencies..."
-    LogMessage "PROGRESS: 5" "INFO"
+    LogMessage "PROGRESS: 5"
 
     # Check if Chocolatey is installed
     if (-not (Get-Command choco.exe -ErrorAction SilentlyContinue)) {
-        # Check for the existence of the Chocolatey directory and remove if found
         if (Test-Path "$env:ChocolateyInstall") {
             Remove-Item -Recurse -Force "$env:ChocolateyInstall"
         }
 
         LogMessage "[INFO] Chocolatey not found. Installing Chocolatey..."
         try {
-            Set-ExecutionPolicy Bypass -Scope Process -Force;
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
-            iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+            Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         } catch {
-            LogMessage "Failed to install Chocolatey: $_"
+            LogMessage "Failed to install Chocolatey: $_" "ERROR"
             return
         }
     } else {
         LogMessage "[INFO] Chocolatey already installed."
     }
 
-    # Check if older versions of Python exist and remove them
-    LogMessage "[INFO] Check if older versions of Python exist and remove them"
-    if (choco list --local-only python | Where-Object { $_ -match 'python\|' }) {
-        LogMessage "[INFO] Removing older versions of Python..." "INFO"
-        try {
-            choco uninstall python -y
-        } catch {
-            LogMessage "Failed to uninstall older versions of Python: $_"
-        }
-    }
-
     # Install required packages via Chocolatey
-    LogMessage "[INFO] Installing python, protoc, curl, jq, wget, gnupg, git via Chocolatey..."
+    LogMessage "[INFO] Installing python, protoc, curl, jq, wget, gnupg, git, via Chocolatey..."
     try {
         $chocoOutput = choco install python3 protoc curl jq wget gnupg git protobuf -y 2>&1
-        LogMessage $chocoOutput "INFO"
+        LogMessage $chocoOutput
+
+        RefreshEnv
     } catch {
-        LogMessage "Failed to install dependencies via Chocolatey: $_"
+        LogMessage "Failed to install dependencies via Chocolatey: $_" "ERROR"
         return
     }
 
+    # Verify GPG installation
+    if (-not (Get-Command gpg -ErrorAction SilentlyContinue)) {
+        LogMessage "GPG installation failed or not in PATH" "ERROR"
+        exit 1
+    }
+
     LogMessage "PROGRESS: 10"
+}
+
+# Main script execution starts here
+
+LogMessage "##############################################################################"
+LogMessage "# Check if running as administrator."
+LogMessage "##############################################################################"
+
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    LogMessage "Please right-click and re-run installer as administrator." "ERROR"
+    exit 1
 }
 
 LogMessage "##############################################################################"
@@ -231,32 +209,30 @@ python -m venv $venvPath
 
 # Activate the Virtual Environment
 LogMessage "[INFO] Activating the virtual environment..."
-$activateScript = Join-Path -Path $venvPath -ChildPath "Scripts\Activate"
+$activateScript = Join-Path -Path $venvPath -ChildPath "Scripts\Activate.ps1"
 . $activateScript
 LogMessage "[INFO] Virtual environment activated!"
 
-Write-Host "##############################################################################"
-Write-Host "# 2 Start of script."
-Write-Host "##############################################################################"
+LogMessage "##############################################################################"
+LogMessage "# 2 Start of script."
+LogMessage "##############################################################################"
 
 LogMessage "[INFO] Checking and installing prerequisites..."
 LogMessage "[INFO] INSTALL_PATH: $INSTALL_PATH"
 LogMessage "[INFO] SELECTED_COINS: $SELECTED_COINS"
 LogMessage "PROGRESS: 15"
 
-Write-Host "##############################################################################"
-Write-Host "# 3 User selected installation path and selected coins."
-Write-Host "##############################################################################"
+LogMessage "##############################################################################"
+LogMessage "# 3 User selected installation path and selected coins."
+LogMessage "##############################################################################"
 
 LogMessage "[INFO] Please enter the absolute path to the directory where you wish to install BasicSwap: $INSTALL_PATH"
 LogMessage "[INFO] Please choose the coins you want to include (separate with commas, no spaces): $SELECTED_COINS"
 LogMessage "PROGRESS: 20"
 
-Write-Host "##############################################################################"
-Write-Host "# 4 Validate selected coins input"
-Write-Host "##############################################################################"
-
-LogMessage "[INFO] Validating selected coins input."
+LogMessage "##############################################################################"
+LogMessage "# 4 Validate selected coins input"
+LogMessage "##############################################################################"
 
 if ($SELECTED_COINS -notmatch '^[a-zA-Z,]+$') {
     LogMessage "Invalid input. Please only use comma-separated coin names without spaces." "ERROR"
@@ -265,22 +241,17 @@ if ($SELECTED_COINS -notmatch '^[a-zA-Z,]+$') {
 
 LogMessage "Selected coins input validated successfully."
 
-
-Write-Host "##############################################################################"
-Write-Host "# 5 Set up the coins data directory."
-Write-Host "##############################################################################"
-
-LogMessage "[INFO] Setting up the coins data directory..."
+LogMessage "##############################################################################"
+LogMessage "# 5 Set up the coins data directory."
+LogMessage "##############################################################################"
 
 $COINDATA_PATH = Join-Path $INSTALL_PATH "coindata"
 LogMessage "[INFO] The path to the coins data dirs folder is $COINDATA_PATH"
 LogMessage "PROGRESS: 25"
 
-Write-Host "##############################################################################"
-Write-Host "# 6 Check if the coins data directory exists."
-Write-Host "##############################################################################"
-
-LogMessage "[INFO] Checking if the coins data directory exists..."
+LogMessage "##############################################################################"
+LogMessage "# 6 Check if the coins data directory exists."
+LogMessage "##############################################################################"
 
 if (Test-Path $COINDATA_PATH) {
     LogMessage "The coins data directory already exists at $COINDATA_PATH." "WARNING"
@@ -295,11 +266,9 @@ LogMessage "PROGRESS: 30"
 New-Item -ItemType Directory -Force -Path $COINDATA_PATH
 LogMessage "PROGRESS: 35"
 
-Write-Host "##############################################################################"
-Write-Host "# 7 Check if Python is installed, and if not, install required dependencies."
-Write-Host "##############################################################################"
-
-LogMessage "[INFO] Checking if Python is installed..."
+LogMessage "##############################################################################"
+LogMessage "# 7 Check if Python is installed, and if not, install required dependencies."
+LogMessage "##############################################################################"
 
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
     LogMessage "[ERROR] Python is not installed. Attempting to install required dependencies..."
@@ -308,6 +277,12 @@ if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
     LogMessage "[INFO] Python detected: $(python --version)"
 }
 
+LogMessage "##############################################################################"
+LogMessage "# 8 Create .bat files"
+LogMessage "##############################################################################"
+
+Create-BatFiles
+
 LogMessage "PROGRESS: 40"
 
 $COINCURVE_REPO_PATH = Join-Path $COINDATA_PATH "coincurve-tecnovert"
@@ -315,11 +290,11 @@ $COINCURVE_REPO_PATH = Join-Path $COINDATA_PATH "coincurve-tecnovert"
 $config = @{
     INSTALL_PATH = $INSTALL_PATH
     SELECTED_COINS = $SELECTED_COINS
-    WALLET_PASSWORD =$WALLET_PASSWORD
+    WALLET_PASSWORD = $WALLET_PASSWORD
 }
 $configPath = Join-Path $env:TEMP "basicswap_config.json"
 $config | ConvertTo-Json | Set-Content $configPath
 
-Write-Host "##############################################################################"
-Write-Host "# Part 1 completed. Running Part 2"
-Write-Host "##############################################################################"
+LogMessage "##############################################################################"
+LogMessage "# Part 1 completed. Running Part 2"
+LogMessage "##############################################################################"
