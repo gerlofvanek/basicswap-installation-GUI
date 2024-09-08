@@ -123,7 +123,7 @@ try {
     RefreshEnv
     if ($SELECTED_COINS.Contains("Monero")) {
         LogMessage "[INFO] Preparing Monero setup. Fetching current XMR height..."
-        $CURRENT_XMR_HEIGHT = (Invoke-WebRequest -Uri "https://localmonero.co/blocks/api/get_stats" | ConvertFrom-Json).height
+        $CURRENT_XMR_HEIGHT = (Invoke-WebRequest -Uri "https://xmrchain.net/api/networkinfo" | ConvertFrom-Json).data.height
         LogMessage "[INFO] Monero selected. Current XMR height: $CURRENT_XMR_HEIGHT"
         LogMessage "PROGRESS: 70"
         LogMessage "[INFO] Starting basicswap-prepare for Monero. This might take a while.."
