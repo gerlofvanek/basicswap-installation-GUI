@@ -1,3 +1,8 @@
+# WIP - Work on new version of (BSX) WIN Installer
+
+Work on a new version of the (BSX) WIN Installer will start soon. It will be fully refactored and will work with the latest release of BasicSwap Version 0.13.5 and GUI 3.1. A little tip can go a long way in supporting future development!
+
+
 ![BasicswapDEX Preview](.github-readme/basicswap_header_v3.0.0-WIN.jpg)
 
 # BasicSwap (BSX) Installer (WIN 10/11)
